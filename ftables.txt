@@ -1,0 +1,12 @@
+NXST_FLOW reply (xid=0x4):
+ cookie=0x0, duration=1487952.363s, table=0, n_packets=150270, n_bytes=183872492, idle_age=65534, hard_age=65534, priority=34,tcp,in_port=LOCAL,tp_src=443 actions=resubmit(,1)
+ cookie=0x0, duration=1557657.197s, table=0, n_packets=802245, n_bytes=383263297, idle_age=431, hard_age=65534, priority=10,in_port=LOCAL actions=output:2,output:1
+ cookie=0x0, duration=1555496.678s, table=0, n_packets=189, n_bytes=17904, idle_age=65534, hard_age=65534, priority=10,in_port=2 actions=LOCAL,output:1
+ cookie=0x0, duration=1555488.238s, table=0, n_packets=78536, n_bytes=53023822, idle_age=464, hard_age=65534, priority=11,in_port=1 actions=output:2
+ cookie=0x0, duration=1555175.514s, table=0, n_packets=838949, n_bytes=82112034, idle_age=39, hard_age=65534, priority=12,in_port=2 actions=mod_dl_src:fa:16:3e:92:66:2a,mod_dl_dst:fa:16:3e:f9:cf:03,output:1
+ cookie=0x0, duration=1550525.154s, table=0, n_packets=43360, n_bytes=4993598, idle_age=65534, hard_age=65534, priority=18,in_port=4 actions=resubmit(,1)
+ cookie=0x0, duration=1555366.499s, table=0, n_packets=0, n_bytes=0, idle_age=65534, hard_age=65534, priority=10,ip,in_port=1,nw_dst=10.0.0.100 actions=LOCAL
+ cookie=0x0, duration=1555246.880s, table=0, n_packets=0, n_bytes=0, idle_age=65534, hard_age=65534, priority=10,ip,in_port=2,nw_dst=10.0.0.100 actions=LOCAL
+ cookie=0x0, duration=1487849.190s, table=1, n_packets=150270, n_bytes=183872492, idle_age=65534, hard_age=65534, priority=34,in_port=LOCAL actions=output:4
+ cookie=0x0, duration=1487784.066s, table=1, n_packets=3605, n_bytes=440914, idle_age=65534, hard_age=65534, priority=12,ip,in_port=4 actions=mod_dl_src:fa:16:3e:92:66:2a,mod_dl_dst:fa:16:3e:f9:cf:03,output:1
+ cookie=0x0, duration=1483741.806s, table=1, n_packets=39755, n_bytes=4552684, idle_age=65534, hard_age=65534, priority=16,ip,in_port=4 actions=mod_dl_src:fa:16:3e:92:66:2a,mod_dl_dst:fa:16:3e:f9:cf:03,output:1
