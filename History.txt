@@ -1,0 +1,1000 @@
+  882  iptables -A FORWARD -i ens5 -o ens4 -m state --state RELATED,ESTABLISHED -j ACCEPT
+  883  iptables -A FORWARD -i ens4 -o ens5 -j ACCEPT
+  884  ping -I ens3 10.2.2.3
+  885  ping -I ens4 10.2.2.3
+  886  ping -I ens4 10.2.2.8
+  887  ping -I ens3 10.2.2.8
+  888  route -n
+  889  ping  10.2.2.8
+  890  ping  10.2.2.9
+  891  ping  10.2.2.3
+  892  ping  10.2.2.9
+  893  ping  10.2.2.8
+  894  ping  10.2.2.3
+  895  export PATH=$PATH:/usr/local/share/openvswitch/scripts/
+  896  ovs-ctl start --system-id=random
+  897  ovs-vsctl add-br br1
+  898  ifconfig br1 up
+  899  ip add del 10.0.0.13 dev ens3
+  900  ip a add 10.0.0.13/24 dev br1
+  901  ifconfig ens3 hw ether fa:16:3e:bc:ab:7c
+  902  ovs-vsctl set bridge br1 other-config:hwaddr=fa:16:3e:bc:ab:7c
+  903  ovs-vsctl set-controller br1 tcp:127.0.0.1:6633
+  904  ovs-vsctl show
+  905  ifconfig 
+  906  ping -I br1 10.0.0.5
+  907  ping -I br1 10.0.0.12
+  908  route -n
+  909  ping -I ens4 10.0.0.12
+  910  ping -I ens4 10.0.0.5
+  911  ovs-vsctl del-br ofbr
+  912  ovs-vsctl show
+  913  ovs-vsctl stop
+  914  ovs-vsctl br1 stop
+  915  ovs-ctl stop
+  916  ovs-ctl start --system-id=random
+  917  ping -I br1 10.0.0.1
+  918  ping -I br1 10.0.0.2
+  919  ping -I br1 10.0.0.5
+  920  ping -I br1 10.0.0.13
+  921  ovs-vsctl del-br br1
+  922  ovs-ctl stop
+  923  reboot 0
+  924  iptables -h
+  925  iptables -L
+  926  ping -I ens 10.0.0.5
+  927  ping -I ens3 10.0.0.5
+  928  ifconfig -a
+  929  ping -I ens3 10.0.0.12
+  930  ping -I ens3 -c2 10.0.0.12
+  931  ping -I ens3 -c2 10.2.2.3
+  932  ping -I ens5 -c2 10.2.2.3
+  933  ping -I ens5 -c2 10.2.2.8
+  934  ping -I ens4 -c2 10.2.2.8
+  935  ping -I ens3 -c2 10.2.2.8
+  936  export PATH=$PATH:/usr/local/share/openvswitch/scripts/
+  937  ovs-ctl start --system-id=random
+  938  ovs-vsctl add-br br1
+  939  ifconfig br1 up
+  940  sudo ip add del 10.0.0.13 dev ens3
+  941  ovs-vsctl add-port br1 ens3
+  942  ip a add 10.0.0.13/24 dev br1
+  943  ifconfig ens3 hw ether fa:16:3e:bc:ab:7c
+  944  ovs-vsctl set bridge br1 other-config:hwaddr=fa:16:3e:bc:ab:7c
+  945  ovs-vsshow
+  946  ovs-vsctl show
+  947  ping -I br1 -c2 10.0.0.12
+  948  ifconfig 
+  949  iptables -L
+  950  ping -I ens4 -c2 10.2.2.9
+  951  sysctl -a | grep \\.rp_filter
+  952  nano /etc/sysctl.conf 
+  953  ping -I ens4 -c2 10.2.2.9
+  954  ping -I ens4 -c2 10.2.2.8
+  955  ping -I ens4 -c2 10.2.2.3
+  956  ping -I ens4 -c2 10.2.2.10
+  957  nano /etc/sysctl.conf 
+  958  iptables -L
+  959  iptables -S
+  960  sudo iptables -A INPUT -m conntrack --ctstate ESTABLISHED,RELATED -j ACCEPT
+  961  iptables -S
+  962  iptables -L
+  963  ping -I ens4 -c2 10.2.2.10
+  964  ping -I ens5 -c2 10.2.2.10
+  965  ping -I br1 -c2 10.2.2.10
+  966  route -n
+  967  iptables -F
+  968  iptables -X
+  969  iptables -L
+  970  nano iptabls.sh
+  971  ll
+  972  ./iptabls.sh
+  973  sudo ./iptabls.sh
+  974  chmod 755 iptabls.sh 
+  975  ./iptabls.sh
+  976  ping -I br1 -c2 10.2.2.10
+  977  ping -I br1 -c2 10.2.2.8
+  978  iptables -F
+  979  iptables -X
+  980  iptables -L
+  981  ifconfig 
+  982  ping -I br1 -c2 10.0.0.5
+  983  ping -I br1 -c2 10.0.0.12
+  984  ifconfig 
+  985  ping 10.0.0.5
+  986  ping 8.8.8.8
+  987  ping -I br1 -c2 10.0.0.5
+  988  ping 10.0.0.5
+  989  ping -I br1 -c2 10.0.0.5
+  990  ping -I br1 -c2 10.0.0.12
+  991  ping -I br1 -c2 10.2.2.7
+  992  nano iptabls.sh 
+  993  iptables -L
+  994  ./iptabls.sh 
+  995  ping -I br1 -c2 10.2.2.7
+  996  ping -I br1 -c2 10.0.0.12
+  997  ping -I br1 -c2 10.0.0.5
+  998  nano add_vxlan
+  999  ll
+ 1000  ls
+ 1001  ovs-ctl start --system-id=random
+ 1002  export PATH=$PATH:/usr/local/share/openvswitch/scripts/
+ 1003  ovs-ctl start --system-id=random
+ 1004  ifconfig -a
+ 1005  ip a add 10.0.0.13/24 dev br1
+ 1006  ovs-vsctl show
+ 1007  ovs-vsctl del-br br1
+ 1008  ovs-vsctl show
+ 1009  ifconfig -a
+ 1010  dhclient 
+ 1011  dhclient ens3
+ 1012  ping 10.0.0.5
+ 1013  ping 10.0.0.4
+ 1014  ovs-vsctl add-br brI
+ 1015  ifconfig brI up
+ 1016  ovs-vsctl 
+ 1017  ovs-vsctl show
+ 1018  sudo ip add del 10.0.0.13 dev ens3
+ 1019  ovs-vsctl add-port brI ens3
+ 1020  ip a add 10.0.0.13/24 dev brI
+ 1021  ifconfig ens3 hw ether fa:16:3e:bc:ab:7c
+ 1022  ovs-vsctl set bridge brI other-config=fa:16:3e:bc:ab:7c
+ 1023  ovs-vsctl set bridge brI other-config:hwaddr=fa:16:3e:bc:ab:7c
+ 1024  ifconfig brI
+ 1025  ping -c2 -I brI 10.0.0.4
+ 1026  export PATH=$PATH:/usr/local/share/openvswitch/scripts/
+ 1027  ovs-ctl start --system-id=random
+ 1028  ifconfig -a
+ 1029  ovs-vsctl add-port br2 vl1 -- set interface  vl1 type=vxlan option:remote_ip=10.0.0.4 option:key=100
+ 1030  ovs-vsctl show
+ 1031  nano add_vxlan 
+ 1032  ovs-appctl fdb/show brI
+ 1033  nano add_vxlan 
+ 1034  ovs-ctl stop
+ 1035  ip r add 8.8.8.8 via 10.0.0.4
+ 1036  ping 8.8.8.8
+ 1037  ip r del 8.8.8.8 via 10.0.0.4
+ 1038  ip r
+ 1039  nano /etc/sysctl.conf 
+ 1040  man sysctl
+ 1041  sysctl -p /etc/sysctl.conf 
+ 1042  nano /etc/sysctl.conf 
+ 1043  sysctl -p /etc/sysctl.conf 
+ 1044  nano /etc/sysctl.conf 
+ 1045  ifconfig 
+ 1046  export PATH=$PATH:/usr/local/share/openvswitch/scripts/
+ 1047  ovs-ctl start --system-id=random
+ 1048  ovs-vsctl show
+ 1049  ifconfig brI up
+ 1050  ifconfig 
+ 1051  ifconfig ens3 0
+ 1052  ifconfig ens3 hw ether fa:16:3e:bc:ab:7c
+ 1053  ip a add 10.0.0.13/24 dev brI
+ 1054  ifconfig 
+ 1055  ping -c2 -I brI 10.0.0.4
+ 1056  ovs-vsctl show
+ 1057  ovsdb-client dump | less -S
+ 1058  ovs-vsctl set bridge brI stp_enable=true
+ 1059  ifconfig 
+ 1060  cd
+ 1061  ovs-vsctl show
+ 1062  ovs-ctl start --system-id=random
+ 1063  export PATH=$PATH:/usr/local/share/openvswitch/scripts/
+ 1064  ovs-ctl start --system-id=random
+ 1065  ovs-vsctl del-br brI
+ 1066  ifconfig -a
+ 1067  sysctl -a | grep \\.rp_filter
+ 1068  sysctl -a | grep \\.ip_forward
+ 1069  ovs-vsctl show
+ 1070  clear
+ 1071  ovs-vsctl add-br brI
+ 1072  ifconfig brI up
+ 1073  ovs-vsctl show
+ 1074  ifconfig ens3 0
+ 1075  ovs-vsctl .add-port brI ens3
+ 1076  ovs-vsctl add-port brI ens3
+ 1077  ip a add 10.0.0.13/24 dev brI
+ 1078  ifconfig ens3 hw ether fa:16:3e:bc:ab:7c
+ 1079  ovs-vsctl set bridge brI other-config:hwaddr=fa:16:3e:bc:ab:7c
+ 1080  ovs-vscSHOW
+ 1081  ovs-vsctl show
+ 1082  ifconfig brI
+ 1083  ping -c2 -I brI 10.0.0.4
+ 1084  ovs-vsctl set bridge brI stp_enable=true
+ 1085  nano /home/ubuntu/add_vxlan 
+ 1086  ovs-vsctl add-port brI vx1 -- set interface vx1 type=vxlan option:remote_ip=10.0.0.4 option:key=100 ofport_request=10
+ 1087  ovs-vsctl add-port brI vport1 -- set interface vport1 type=internal
+ 1088  ifconfig vport1 10.10.10.1/24 up
+ 1089  ovs-vsctl show
+ 1090  ping 10.10.10.2
+ 1091  ifconfig 
+ 1092  ping 10.10.10.1
+ 1093  ping 10.10.10.2
+ 1094  ping 10.0.0.4
+ 1095  ovs-vsctl show
+ 1096  ifconfig 
+ 1097  ovs-ofctl dump-flows brI
+ 1098  nano /home/ubuntu/add_vxlan 
+ 1099  ip route show 
+ 1100  ovs-ofctl dump-flows brI
+ 1101  nano /home/ubuntu/add_vxlan 
+ 1102  ovs-ofctl show brI
+ 1103  ping 8.8.8.8
+ 1104  ping brI 8.8.8.8
+ 1105  ping -I brI 8.8.8.8
+ 1106  ping -I brI 192.168.85.164
+ 1107  ping -I brI 8.8.8.8
+ 1108  ovs-ctl stop
+ 1109  ovs-ofctl show brI
+ 1110  ovs-ctl start
+ 1111  export PATH=$PATH:/usr/local/share/openvswitch/scripts/
+ 1112  ovs-ctl start
+ 1113  ovs-ofctl show brI
+ 1114  ovs-vsctl del-br brI
+ 1115  ovs-ofctl show brI
+ 1116  ifconfig 
+ 1117  ifconfig -a
+ 1118  export PATH=$PATH:/usr/local/share/openvswitch/scripts/
+ 1119  ovs-ctl start --system-id=random
+ 1120  ifconfig 
+ 1121  ovs-vsctl add-br br11
+ 1122  ifconfig br11 up
+ 1123  ifconfig ens3 0
+ 1124  ip a add 10.0.0.4/24 dev br11
+ 1125  ovs-vsctl set bridge other-config:hwaddr=fa:16:3e:bc:ab:7c
+ 1126  ovs-vsctl set bridge br11  other-config:hwaddr=fa:16:3e:bc:ab:7c
+ 1127  ifconfig 
+ 1128  ping -c2 -I br11 10.0.0.12
+ 1129  nano /etc/sysctl.conf 
+ 1130  ping -c2 -I br11 10.0.0.12
+ 1131  ping  10.0.0.12
+ 1132  ping -c2 -I br11 10.2.2.2
+ 1133  ip a add 10.0.0.13/24 dev br11
+ 1134  ping -c2 -I br11 10.0.0.12
+ 1135  ip a add 10.0.0.13/24 dev br11
+ 1136  ping -c2 -I br11 10.0.0.12\
+ 1137  ping -c2 -I br11 10.0.0.12
+ 1138  ovs-vsctl del-br br11
+ 1139  ifconfig 
+ 1140  ovs-vsctl add-br br11
+ 1141  ifconfig br11 up
+ 1142  ovs-vsctl add-port br11 ens3
+ 1143  ip a add 10.0.0.13/24 dev br11
+ 1144  ifconfig ens3 hw ether fa:16:3e:bc:ab:7c
+ 1145  ovs-vsctl set bridge br11 other-config:hwaddr=fa:16:3e:bc:ab:7c
+ 1146  ovs-vsctl set bridge br0 stp_enable=true
+ 1147  ovs-vsctl set bridge br11 stp_enable=true
+ 1148  ifconfig 
+ 1149  ping -c2 -I br11 10.0.0.7
+ 1150  ping -c2 -I br11 10.0.0.5
+ 1151  ping -c2 -I br11 10.0.0.12
+ 1152  ping -c2 -I br11 10.0.0.7
+ 1153  ovs-ofctl show br11
+ 1154  ovs-vsctl set bridge br11 stp_enable=true
+ 1155  ping -c2 -I br11 10.0.0.7
+ 1156  ovs-vsctl add-port br11 gre1 -- set interface gre1 type=gre option:remote_ip=10.0.0.7 option:key=100 ofport_request=10
+ 1157  ping -c2 -I br11 10.0.0.7
+ 1158  ping -c2 -I br11 8.8.8.8
+ 1159  ping -c2 -I br11 10.0.0.7
+ 1160  ping -c2 -I br11 8.8.8.8
+ 1161  ovs-vsctl show
+ 1162  ping -c2 -I br11 10.2.2..3
+ 1163  ping -c2 -I br11 10.2.2.3
+ 1164  ping -c2 -I br11 10.2.2.1
+ 1165  ls
+ 1166  vi add_vxlan 
+ 1167  ping -c2 -I br11 10.2.2.1
+ 1168  ping -c2 -I br11 10.0.0.7
+ 1169  ping -c2 -I br11 10.0.0.13
+ 1170  ping -c2 -I br11 10.2.2.3
+ 1171  ping -c2 -I br11 10.0.0.7
+ 1172  ping -c2 -I br11 10.2.2.3
+ 1173  ping -c2 -I br11 ua.pt
+ 1174  ping -c2 -I br11 10.2.2.1
+ 1175  ping -c2 -I br11 ua.pt
+ 1176  ping -c2 -I br11 10.2.2.3
+ 1177  ping -c2 -I br11 10.0.0.7
+ 1178  ping -c2 -I br11 10.2.2.3
+ 1179  ping -c2 -I 10.0.0.13 10.2.2.3
+ 1180  ping -c2 -I br11 10.2.2.3
+ 1181  ping -c2 -I br11 10.0.0.7
+ 1182  ping -c2 -I br11 10.2.2.1
+ 1183  ping -c2 -I br11 10.0.0.7
+ 1184  ping -c2 -I br11 10.2.2.3
+ 1185  nano add_vxlan 
+ 1186  ping -c2 -I br11 10.2.2.3
+ 1187  ping -c2 -I br11 10.2.2.1
+ 1188  ping -c2 -I br11 8.8.8.8
+ 1189  ping -c2 -I br11 ua.pt
+ 1190  ping -c2 -I br11 8.8.8.8
+ 1191  ping -c2 -I br11 10.2.2.1
+ 1192  ping -c2 -I br11 8.8.8.8
+ 1193  ping -c2 -I br11 10.2.2.1
+ 1194  ping -c2 -I br11 8.8.8.8
+ 1195  ovs-vsctl show
+ 1196  tcpdump -envi ens3 icmp 
+ 1197  ping -c2 -I br11 10.2.2.1
+ 1198  ovs-vsctl show
+ 1199  history |gerp actions=
+ 1200  history |gre p actions=
+ 1201  history |grep actions=
+ 1202  ovs-ofctl add-flows br11 in_port=1,ip,nw_dst="www.youtube.com",dl_type=0x0800,actions=output=20
+ 1203  ovs-ofctl add-flows br11 in_port=1,ip,nw_dst=216.58.211.254,dl_type=0x0800,actions=output=20
+ 1204  export PATH=$PATH:/usr/local/share/openvswitch/scripts/
+ 1205  ovs-ofctl add-flows br11 in_port=1,ip,nw_dst=216.58.211.254,dl_type=0x0800,actions=output=20
+ 1206  ovs-ofctl add-flows br11 in_port=1,ip,nw_dst=216.58.211.254,dl_type=0x0800,actions=output:20
+ 1207  ovs-ofctl show br22
+ 1208  ovs-ofctl show br11
+ 1209  nano ryu/ryu/app/simple_switch_13.py
+ 1210  ovs-ofctl br11 show
+ 1211  ovs-ofctl  show br11
+ 1212  ovs-ofctl add-flow br11 dl_type=0x0800,in_port=1,actions=output:10
+ 1213  ovs-ofctl br11 show
+ 1214  ovs-ofctl  show br11
+ 1215  history | grep gre
+ 1216  ovs-vsctl add-port br11 gre2 -- set interface gre2 type=gre option:remote_ip=10.0.0.7 option:key=200 ofport_request=20
+ 1217  ovs-ofctl show br11
+ 1218  OVS-VSCSHOW
+ 1219  ovs-vsctl show
+ 1220  ovs-ofctl show br11
+ 1221  man ovsdb
+ 1222  man ovs-ctl
+ 1223  man ovs-ofctl
+ 1224  ovs-ofctl show br11
+ 1225  ovs-ofctl dump-tables br11
+ 1226  ifconfig 
+ 1227  ovs-ofctl dump-tables br11
+ 1228  ls
+ 1229  nano ryu/ryu/app/simple_switch_13.py
+ 1230  ls
+ 1231  ovs-vsctl show
+ 1232  ovs-ofctl show br11
+ 1233  ovs-ofctl dump-flows br11
+ 1234  history | grep in_port=1,actions=output:10
+ 1235  nano ryu/ryu/app/simple_switch_13.py
+ 1236  ovs-ofctl show br11
+ 1237  ovs-ofctl dump-flows br22
+ 1238  ovs-ofctl dump-flows br111
+ 1239  ovs-ofctl dump-flows br11
+ 1240  ovs-ofctl del-flows
+ 1241  ovs-ofctl del-flows br11
+ 1242  ovs-ofctl dump-flows br11
+ 1243  history | grep nw_src
+ 1244  ovs-ofctl add-flows br11 ip,in_port=1,actions=output:10
+ 1245  ovs-vsctl show
+ 1246  ovs-ofctl add-flows br11 dl_type=0x0800,ip,in_port=1,actions=output:10
+ 1247  ovs-ofctl add-flow br11 dl_type=0x0800,ip,in_port=1,actions=output:10
+ 1248  ovs-ofctl dump-flows br11
+ 1249  ifconfig 
+ 1250  ovs-ofctl dump-flows br11
+ 1251  ovs-ofctl add-flow br11 in_port=1,actions=normal
+ 1252  ovs-ofctl dump-flows br11
+ 1253  tcpdump -envi ens3 
+ 1254  ovs-ofctl dump-flows br11
+ 1255  ovs-ofctl del-flows br11
+ 1256  ovs-ofctl dump-flows br11
+ 1257  ovs-ofctl add-flow br11 ip,dl_type=0x0800,in_port=1,actions=output:10
+ 1258  ovs-ofctl dump-flows br11
+ 1259  ovs-ofctl add-flow br11 ip,dl_type=0x0800,in_port=1,actions=output:20
+ 1260  ovs-ofctl dump-flows br11
+ 1261  ovs-ofctl add-flow br11 priorety=2,ip,dl_type=0x0800,in_port=1,actions=output:10
+ 1262  ovs-ofctl add-flow br11 priority=2,ip,dl_type=0x0800,in_port=1,actions=output:10
+ 1263  ovs-ofctl dump-flows br11
+ 1264  tcpdump  -envi ens3 and not host  10.0.0.7
+ 1265  tcpdump -envi ens3 and not host 10.0.0.7
+ 1266  tcpdump -envi ens3 and no host 10.0.0.7
+ 1267  tcpdump -envi ens3 
+ 1268  tcpdump -envi ens3 and host 10.0.0.7
+ 1269  tcpdump -envi ens3 any and host 10.0.0.7
+ 1270  tcpdump -ni ens3 any and host 10.0.0.7
+ 1271  tcpdump -ni ens3 any
+ 1272  tcpdump -ni ens3 
+ 1273  tcpdump -ni ens3 and
+ 1274  tcpdump -ni ens3 and host 
+ 1275  tcpdump -ni ens3 and no host 10.0.0.7 
+ 1276  tcpdump -i ens3 and no host 10.0.0.7 
+ 1277  ifconfig 
+ 1278  tcpdump -i ens3 and no host 10.0.0.7
+ 1279  tcpdump -h
+ 1280  tcpdump -i ens3 
+ 1281  tcpdump -i ens3  no host 10.0.0.7
+ 1282  tcpdump -i ens3  host 10.0.0.7
+ 1283  tcpdump -i ens3 no host 10.0.0.7
+ 1284  tcpdump -i ens3 and no host 10.0.0.7
+ 1285  tcpdump -envi ens3 and no host 10.0.0.7
+ 1286  tcpdump -envi ens3 icmp and no host 10.0.0.7
+ 1287  tcpdump -envi ens3 icmp  no host 10.0.0.7
+ 1288  tcpdump -envi ens3 icmp  host 10.0.0.7
+ 1289  tcpdump -envi ens3 icmp  andhost 10.0.0.7
+ 1290  tcpdump -envi ens3 icmp  and host 10.0.0.7
+ 1291  tcpdump -envi ens3 icmp 
+ 1292  reboot 0
+ 1293  ovs-ofctl dump-flows br11
+ 1294  ovs-ofctl add-flow br11 dl_type=0x0800,ip,nw_src=199.223.232.0/21,in_port=1,actions=output=20
+ 1295  ovs-ofctl add-flow br11 dl_type=0x0800,ip,nw_src=207.223.160.0/20,in_port=1,actions=output=20
+ 1296  ovs-ofctl add-flow br11 dl_type=0x0800,ip,nw_src=208.65.152.0/22,in_port=1,actions=output=20
+ 1297  ovs-ofctl add-flow br11 dl_type=0x0800,ip,nw_src=208.117.224.0/19,in_port=1,actions=output=20
+ 1298  ovs-ofctl add-flow br11 dl_type=0x0800,ip,nw_src=209.85.128.0/17,in_port=1,actions=output=20
+ 1299  ovs-ofctl add-flow br11 dl_type=0x0800,ip,nw_src=216.58.192.0/19,in_port=1,actions=output=20
+ 1300  ovs-ofctl add-flow br11 dl_type=0x0800,ip,nw_src=216.239.32.0/19,in_port=1,actions=output=20
+ 1301  ovs-ofctl dump-flows br11
+ 1302  ovs-ofctl add-flow br11 dl_type=0x0800,ip,nw_src=172.217.168.174,in_port=1,actions=output=20
+ 1303  ovs-ofctl dump-flows br11
+ 1304  tcpdump -envi ens3 
+ 1305  ovs-ofctl dump-flows br11
+ 1306  ovs-ofctl br11 show
+ 1307  ovs-ofctl  show b
+ 1308  tcpdump -envi gre2
+ 1309  tcpdump -envi gns3 
+ 1310  tcpdump -envi ens3 
+ 1311  ovs-ofctl br11 show
+ 1312  ovs-ofctl dump-flows br11
+ 1313  ovs-vsctl show
+ 1314  dhclient ens4
+ 1315  ifconfig 
+ 1316  export PATH=$PATH:/usr/local/share/openvswitch/scripts/
+ 1317  ovs-ctl start --system-id=random
+ 1318  ovs-vsctl add-br br11
+ 1319  ifconfig 
+ 1320  ifconfig br11 up
+ 1321  ifconfig 
+ 1322  sudo ip add del 10.0.0.13 den ens3
+ 1323  sudo ip add del 10.0.0.13 dev ens3
+ 1324  ovs-vsctl show
+ 1325  ovs-ofctl dump-flows br11
+ 1326  ip a add 10.0.0.13/24 dev br11
+ 1327  ifconfig 
+ 1328  ovs-ofctl dump-flows br11
+ 1329  tcpdump -eniv ens3 
+ 1330  tcpdump -envi ens3 
+ 1331  tcpdump -envi ens3 and no host 10.0.0.7
+ 1332  tcpdump -envi ens3 icmp  and no host 10.0.0.7
+ 1333  tcpdump -envi ens3 icmp  and  host 10.0.0.7
+ 1334  tcpdump -envi ens3 icmp  and  not host 10.0.0.7
+ 1335  tcpdump -envi ens3  and  not host 10.0.0.7
+ 1336  tcpdump -envi ens3  any and  not host 10.0.0.7
+ 1337  tcpdump -envi ens3 icmp  and  host 10.0.0.7
+ 1338  tcpdump -envi ens3 icmp  and  not host 10.0.0.7
+ 1339  tcpdump -ni ens3 icmp  and  not host 10.0.0.7
+ 1340  tcpdump -ni ens3 any  and  not host 10.0.0.7
+ 1341  tcpdump -ni ens3  and  not host 10.0.0.7
+ 1342  tcpdump -ni ens3  all and  not host 10.0.0.7
+ 1343  tcpdump -ni ens3 -any and  not host 10.0.0.7
+ 1344  tcpdump -ni ens3 any and  not host 10.0.0.7
+ 1345  tcpdump -ni ens3 any icmp and  not host 10.0.0.7
+ 1346  tcpdump -envi ens3 any icmp and  not host 10.0.0.7
+ 1347  tcpdump -envi ens3  icmp and  not host 10.0.0.7
+ 1348  tcpdump -envi ens3  any
+ 1349  tcpdump -envi ens3 any
+ 1350  tcpdump -i ens3 any
+ 1351  tcpdump -ni ens3 any
+ 1352  tcpdump -ni ens3 
+ 1353  tcpdump -ni ens3 no host 10.0.0.7
+ 1354  tcpdump -ni ens3 not host 10.0.0.7
+ 1355  ovs-ofctl dump-flows br11
+ 1356  ovs-ofctl add-flow br11 priority=20,ip,in_port=1,nw_src=172.217.168.174,actions=output:20
+ 1357  ovs-ofctl add-flow br11 priority=10,ip,in_port=1,actions=output:10
+ 1358  ovs-ofctl dump-flows br11
+ 1359  ovs-ofctl add-flow br11 ip,in_port=10,actions=output:1
+ 1360  ovs-ofctl add-flow br11 ip,in_port=20,actions=output:1
+ 1361  ovs-ofctl dump-flows br11
+ 1362  nano /etc/sysctl.conf 
+ 1363  sysctl -a | grep \\.ip_forward
+ 1364  sysctl -a | grep \\.rp_filter
+ 1365  ovs-ofctl dump-flows br11
+ 1366  ovs-ofctl del-flows priority=0
+ 1367  ovs-ofctl del-flows br11 priority=0
+ 1368  ovs-ofctl del-flows br11 action-normal
+ 1369  ovs-ofctl del-flows br11 action=normal
+ 1370  ovs-ofctl del-flows br11 actions=normal
+ 1371  ovs-ofctl del-flows br11 
+ 1372  ovs-ofctl dump-flows br11
+ 1373  ovs-ofctl add-flow br11 ip,in_port=1,actions=20
+ 1374  ovs-ofctl dump-flows br11
+ 1375  ovs-ofctl add-flow br11 ip,in_port=1,actions=mod_dl_src:fa:16:3e:bc:ab:7c,mod_dl_dst:92:dd:fd:f8:f6:5a,output:10
+ 1376  ovs-ofctl dump-flows br11
+ 1377  tcpdump -ni ens3 no host 10.0.0.7
+ 1378  tcpdump -ni ens3  host 10.0.0.7
+ 1379  tcpdump -ni ens3  any
+ 1380  tcpdump -ni ens3 
+ 1381  ovs-vsctl del-br br11
+ 1382  ifconfig 
+ 1383  dhclient
+ 1384  ifconfig 
+ 1385  tcpdump -ni ens3 
+ 1386  clear
+ 1387  export PATH=$PATH:/usr/local/share/openvswitch/scripts/
+ 1388  ovs-ctl start --system-id=random
+ 1389  ovs-vsctl show
+ 1390  ovs-vsctl add-br br11
+ 1391  ifconfig br11 up
+ 1392  sudo ip add del 10.0.0.13 dev ens3
+ 1393  ovs-vsctl add-port br11 ens3
+ 1394  ip a add 10.0.0.13/24 dev br11
+ 1395  ifconfig ens3 hw ether fa:16:3e:bc:ab:7c
+ 1396  ovs-vsctl set bridge br11 other-config:hwaddr=fa:16:3e:bc:ab:7c
+ 1397  ifconfig br22
+ 1398  ifconfig br11
+ 1399  ovs-vsctl add-port br11
+ 1400  ovs-vsctl add-port br11 gre10 -- set interface gre10 type=gre option:remote_ip=10.0.0.7 option:key=100 ofport_requset=10
+ 1401  ovs-vsctl show
+ 1402  ovs-vsctl add-port br11 gre10 -- set interface gre10 type=gre option:remote_ip=10.0.0.7 option:key=100 option:ofport_requset=10
+ 1403  ovs-vsctl show
+ 1404  ovs-ofctl dump-ports br11
+ 1405  ovs-vsctl add-port br11 gre20 -- set interface gre20 type=gre option:remote_ip=10.0.0.7 option:key=200 option:ofport_requset=20
+ 1406  ovs-ofctl dump-ports br11
+ 1407  ovs-vsctl show
+ 1408  vi ryu/ryu/app/simple_switch_13.py
+ 1409  ovs-ofctl br11 shoq
+ 1410  ovs-ofctl show br11
+ 1411  ovs-ofctl add-flow br11 priority=20,ip,in_port=ens3,nw_src=199.223.232.0/21,actions=output:gre20
+ 1412  ovs-ofctl add-flow br11 priority=21,ip,in_port=ens3,nw_src=207.223.160.0/20,actions=output:gre20
+ 1413  ovs-ofctl add-flow br11 priority=22,ip,in_port=ens3,nw_src=208.65.152.0/22,actions=output:gre20
+ 1414  ovs-ofctl add-flow br11 priority=23,ip,in_port=ens3,nw_src=208.117.224.0/19,actions=output:gre20
+ 1415  ovs-ofctl add-flow br11 priority=24,ip,in_port=ens3,nw_src=209.85.128.0/17,actions=output:gre20
+ 1416  ovs-ofctl add-flow br11 priority=25,ip,in_port=ens3,nw_src=216.58.192.0/19,actions=output:gre20
+ 1417  ovs-ofctl add-flow br11 priority=26,ip,in_port=ens3,nw_src=216.239.32.0/19,actions=output:gre20
+ 1418  ovs-ofctl add-flow br11 priority=27,ip,in_port=ens3,nw_src=172.217.168.0/24,actions=output:gre20
+ 1419  ovs-ofctl add-port br11 priority=10,ip,in_port=ens3,actions=output:gre10
+ 1420  ovs-ofctl add-flow br11 priority=10,ip,in_port=ens3,actions=output:gre10
+ 1421  ovs-ofctl dump-ports br11
+ 1422  ovs-ofctl dump-flows br11
+ 1423  ovs-ofctl add-flow br11 priority=30,ip,in_port=ens3,nw_dst=199.223.232.0/21,actions=output:gre20
+ 1424  ovs-ofctl add-flow br11 priority=31,ip,in_port=ens3,nw_dst=207.223.160.0/20,actions=output:gre20
+ 1425  ovs-ofctl add-flow br11 priority=32,ip,in_port=ens3,nw_dst=208.65.152.0/22,actions=output:gre20
+ 1426  ovs-ofctl dump-flows br11
+ 1427  ovs-ofctl add-flow br11 priority=39,ip,in_port=ens3,nw_dst=172.217.168.0/24,actions=output:gre20
+ 1428  ovs-ofctl dump-flows br11
+ 1429  ovs-ofctl add-flow br11 priority=27,ip,in_port=gre20,nw_src=172.217.168.0/24,actions=output:ens3
+ 1430  ovs-ofctl dump-flows br11
+ 1431  export PATH=$PATH:/usr/local/share/openvswitch/scripts/
+ 1432  ovs-vsctl show
+ 1433  ovs-ctl start --system-id=random
+ 1434  ovs-vsctl show
+ 1435  ovs-vsctl del-port br11 gre10
+ 1436  ovs-vsctl show
+ 1437  ifconfig 
+ 1438  ovs-vsctl del-br br11
+ 1439  ifconfig 
+ 1440  ovs-vsctl show
+ 1441  ovs-vsctl list bridge 
+ 1442  ovs-vsctl list bridge br11
+ 1443  ovs-vsctl list bridge ovs-br
+ 1444  clear
+ 1445  ovs-vsctl add-br br11
+ 1446  ifconfig br11 up
+ 1447  sudo ip add del 10.0.0.13 dev ens3
+ 1448  ovs-vsctl add-port br11 ens3
+ 1449  ip a add 10.0.0.13/24 dev br11
+ 1450  ifconfig ens3 hw ether fa:16:3e:bc:ab:7c
+ 1451  ovs-vsctl set bridge br11 other-config:hwaddr=fa:16:3e:bc:ab:7c
+ 1452  nano /etc/hosts
+ 1453  cat /etc/group
+ 1454  passwd ubuntu
+ 1455  passwd server
+ 1456  usermod -G sudo -a server
+ 1457  usermod -G sudo -a ubuntu
+ 1458  chown -R server /usr/local/var/log/openvswitch
+ 1459  chown -R ubuntu /usr/local/var/log/openvswitch
+ 1460  chown -R server /usr/local/var/run/openvswitch
+ 1461  chown -R ubuntu /usr/local/var/run/openvswitch
+ 1462  chmod 777 /usr/local/var/run/openvswitch/
+ 1463  chmod 600 /usr/local/var/log/openvswitch
+ 1464  chmod 777 /usr/local/etc/openvswitch/
+ 1465  chown -R server /usr/local/etc/openvswitch/
+ 1466  chown -R ubuntu /usr/local/etc/openvswitch/
+ 1467  chmod 600 /usr/local/var/log/openvswitch
+ 1468  chown -R ubuntu /usr/local/etc/openvswitch/
+ 1469  ifconfig 
+ 1470  sudo dhc
+ 1471  dhclient
+ 1472  ifconfig 
+ 1473  ping -I ens7 20.0.0.10
+ 1474  ping 8.8.8.8
+ 1475  ifconfig 
+ 1476  export PATH=$PATH:/usr/local/share/openvswitch/scripts/
+ 1477  ifconfig 
+ 1478  ovs-ctl start --system-id=random
+ 1479  ovs-vsctl show
+ 1480  ovs-vsctl add-br br2
+ 1481  ifconfig br2 up
+ 1482  sudo ip add del 10.2.2.12 dev ens6
+ 1483  ovs-vsctl add-port br2 ens6
+ 1484  ifconfig ens6 hw ether fa:16:3e:92:66:2a
+ 1485  ovs-vsctl set bridge br2 other-config:hwaddr=fa:16:3e:92:66:2a
+ 1486  ip a add 10.0.0.100/24 dev br2
+ 1487  ifconfig 
+ 1488  ovs-vsctl show
+ 1489  ovs-vsctl add-port br2 gre10 -- set interface gre10 type=gre option:remote_ip=20.0.0.10 option:key=100
+ 1490  ovs-vsctl add-port br2 gre20 -- set interface gre20 type=gre option:remote_ip=20.0.0.10 option:key=200
+ 1491  ovs-vsctl show
+ 1492  ovs-ofctl add-flow br1 table=0,priority=20,ip,in_port=gre20,actions=output:ens7
+ 1493  ovs-ofctl add-flow br2 table=0,priority=34,tcp,in_port=LOCAL,tp_src=443,actions=resubmit(,1)
+ 1494  ovs-ofctl dump-flows br2
+ 1495  ping -I br2 10.0.0.10
+ 1496  ping -I br2 10.0.0.12
+ 1497  ping -I br2 10.0.0.7
+ 1498  ping -I br2 10.0.0.10
+ 1499  ovs-ofctl dump-flows br2
+ 1500  ping -c2 -I br2 10.0.0.10
+ 1501  arp -s 10.0.0.10 fa:16:3e:0c:03:a0
+ 1502  ping -c2 -I br2 10.0.0.10
+ 1503  ovs-ofctl dump-flows br2
+ 1504  ping -c2 -I br2 8.8.8.8
+ 1505  ping -c2 -I ens3 8.8.8.8
+ 1506  ovs-ofctl dump-flows br2
+ 1507  ping -c2 -I br2 8.8.8.8
+ 1508  ovs-ofctl dump-flows br2
+ 1509  tcpdump -eniv ens6
+ 1510  tcpdump -envi ens6
+ 1511  ifconfig 
+ 1512  route -n
+ 1513  ip r
+ 1514  ip r
+ 1515  ip r add 10.0.0.0/24 via ens6
+ 1516  ifconfig '
+ 1517  ifconfig 
+ 1518  ip r
+ 1519  ip r add 10.0.0.0/24 via 
+ 1520  ovs-vsctl show
+ 1521  ip r add 10.0.0.0/24 via ens6
+ 1522  ping -c2 -I br2 10.0.0.10
+ 1523  ping -c2 -I br2 10.0.0.12
+ 1524  ping -c2 -I br2 10.0.0.7
+ 1525  ip r
+ 1526  ip a
+ 1527  ip r
+ 1528  ip r add 10.0.0.0/24 via ens6
+ 1529  ip r add 10.0.0.0/24 via br2
+ 1530  ip r add 10.0.0.0/24 
+ 1531  ifconfig ens6 up
+ 1532  ifconfig 
+ 1533  ip r add 10.0.0.0/24 via ens6
+ 1534  ip r
+ 1535  ip r add 10.0.0.0/24 via LOCAL
+ 1536  route -n
+ 1537  ip r add 10.0.0.0/24 via ens7
+ 1538  history 
+ 1539  history | grep ip r
+ 1540  history | grep 'ip r'
+ 1541  ip r add 10.0.0.0/24 via dev ens6
+ 1542  ip r 
+ 1543  ip r add 10.0.0.0/24 via 20.0.0.20 dev ens3
+ 1544  ip r add 10.0.0.0/24 via 20.0.0.20 dev ens7
+ 1545  ip r
+ 1546  ip r add 10.0.0.0/24 via 20.0.0.20 dev ens7
+ 1547  nano /etc/sysctl.conf 
+ 1548  nano /etc/network/interfaces.d/50-cloud-init.cfg 
+ 1549  nano /etc/network/interfaces
+ 1550  sudo ip r add 10.0.0.0/24 via 20.0.0.20 dev ens7
+ 1551  ip r
+ 1552  sudo ip r add 10.0.0.0/24 via 20.0.0.1 dev ens7
+ 1553  ip r
+ 1554  ping -c2  -I br2 10.0.0.10
+ 1555  ping -c2  -I br2 10.0.0.12
+ 1556  ping -c2  -I br2 10.0.0.7
+ 1557  ping -c2  -I br2 8.8.8.8
+ 1558  ovs-ofctl dump-flows br2
+ 1559  ping -c2  -I ens7 8.8.8.8
+ 1560  ping -c2  -I ens6 8.8.8.8
+ 1561  ping -c2  -I ens3 8.8.8.8
+ 1562  sudo ip r add 10.0.0.0/24 via 10.2.2.1 dev ens6
+ 1563  ovs-ofctl del-flows br2
+ 1564  ovs-ofctl add-flows br1 action=normal
+ 1565  ovs-ofctl add-flows br2 action=normal
+ 1566  ovs-ofctl add-flows br2 actions=normal
+ 1567  ovs-ofctl add-flow br2 actions=normal
+ 1568  ovs-ofctl dump-flows br2
+ 1569  ip a
+ 1570  ping -c2  -I br2 8.8.8.8\
+ 1571  ping -c2  -I br2 8.8.8.8
+ 1572  ping -c2  -I br2 10.0.0.10
+ 1573  export PATH=$PATH:/usr/local/share/openvswitch/scripts/
+ 1574  ovs-vsctl show
+ 1575  ovs-ctl start --system-id=random
+ 1576  ovs-vsctl show
+ 1577  ovs-vsctl del-br br2
+ 1578  ovs-vsctl del-br br1
+ 1579  ifconfig 
+ 1580  export PATH=$PATH:/usr/local/share/openvswitch/scripts/
+ 1581  ovs-vsctl show
+ 1582  ovs-ctl start --system-id=random
+ 1583  ovs-vsctl show
+ 1584  ovs-ofctl dump-flows br2
+ 1585  ovs-ofctl add-flow br2 table=0,priority=9,in_port=LOCAL,actions=output:ens4
+ 1586  ovs-ofctl add-flow br2 table=0,priority=9,in_port=ens4,actions=output:gre10
+ 1587  ovs-ofctl add-flow br2 table=0,priority=9,in_port=LOCAL,actions=output:gre10
+ 1588  ping -I br2 8.8.8.8
+ 1589  ovs-ofctl show br2
+ 1590  ping -I br2 8.8.8.8
+ 1591  ip r
+ 1592  route -n
+ 1593  ovs-ofctl add-flow br2 priority=12,in_port=gre20,actions=resubmit\(,1\)
+ 1594  ifconfig ens5
+ 1595  ifconfig ens4
+ 1596  arp -a
+ 1597  ping -c3 -I br2 10.0.0.12
+ 1598  ping -c3 -I br2 10.0.0.10
+ 1599  ovs-ofctl del-flows br2
+ 1600  ovs-ofctl add-flow br2 action=NORMAL
+ 1601  ifconfig 
+ 1602  dhclient
+ 1603  ifconfig 
+ 1604  export PATH=$PATH:/usr/local/share/openvswitch/scripts/
+ 1605  ovs-ctl start --system-id=random
+ 1606  ovs-vsctl show
+ 1607  ovs-vsctl del-port br2 ens6
+ 1608  ovs-vsctl show
+ 1609  ifconfig br2 up
+ 1610  sudo ip add del 10.2.2.12/24 dev ens4
+ 1611  ovs-vsctl add-port br2 ens4
+ 1612  ip a add 10.2.2.12/24 dev br2
+ 1613  ifconfig ens4 hw ether fa:16:3e:92:66:2a
+ 1614  ifconfig 
+ 1615  ip a add 10.0.0.100/24 dev br2
+ 1616  ifconfig 
+ 1617  ip add del 10.2.2.12/24 dev br2
+ 1618  ip a add 10.0.0.100/24 dev br2
+ 1619  ifconfig 
+ 1620  ip r
+ 1621  ovs-ofctl dump-flows br2
+ 1622  watch -n1 ovs-ofctl dump-flows br2
+ 1623  export PATH=$PATH:/usr/local/share/openvswitch/scripts/
+ 1624  ifconfig 
+ 1625  export PATH=$PATH:/usr/local/share/openvswitch/scripts/
+ 1626  ovs-ctl start --system-id=random
+ 1627  ifconfig br1 up
+ 1628  ifconfig 
+ 1629  tcpdump -envi ens4
+ 1630  ifconfig 
+ 1631  ovs-ofctl dump-flows br2
+ 1632  ovs-vsctl show
+ 1633  sudo ip add del 10.2.2.12 dev ens4
+ 1634  ifconfig ens4 hw ether fa:16:3e:92:66:2a
+ 1635  ovs-vsctl set bridge br2 other-config:hwaddr=fa:16:3e:92:66:2a
+ 1636  ip a add 10.0.0.100/24 dev br2
+ 1637  ping -I br1 10.0.0.10
+ 1638  ping -I br2 10.0.0.10
+ 1639  arp -a
+ 1640  ping -I br2 10.0.0.7
+ 1641  arp -s 10.0.0.10 fa:16:3e:0c:03:a0
+ 1642  ping -I br2 10.0.0.10
+ 1643  ovs-ofctl show br2
+ 1644  ping -I br2 10.0.0.10
+ 1645  ovs-ofctl del-flows br2 in_port=gre10
+ 1646  ping 20.0.0.10
+ 1647  ovs-ofctl add-flow br2 priority=10,in_port=gre10,actions=output:ens4
+ 1648  ovs-ofctl add-flow br2 priority=10,in_port=gre10,nw_dst=10.0.0.100,actions=output:LOCAL
+ 1649  ovs-ofctl del-flows br2 in_port=gre10
+ 1650  ovs-ofctl del-flows br2 in_port=LOCAL
+ 1651  ping 10.2.2.2
+ 1652  ping 10.2.2.12
+ 1653  ping 10.2.2.7
+ 1654  ping 10.2.2.2
+ 1655  ping 10.2.2.
+ 1656  1
+ 1657  ping 10.2.2.1
+ 1658  ping 10.2.2.2
+ 1659  watch -n2 ovs-ofctl dump-flows br2
+ 1660  ovs-vsctl del-br br2
+ 1661  ovs-vsctl show
+ 1662  ifconfig 
+ 1663  dhclient
+ 1664  ifconfig 
+ 1665  ping 10.2.2.7
+ 1666  ping 192.168.85.139 
+ 1667  export PATH=$PATH:/usr/local/share/openvswitch/scripts/
+ 1668  ovs-ctl start --system-id=random
+ 1669  ovs-ctl show
+ 1670  ovs-vsctl show
+ 1671  ovs-vsctl add-br br2
+ 1672  ifconfig br2 up
+ 1673  sudoip add del 10.2.2.12/24 dev ens4
+ 1674  sudo ip add del 10.2.2.12/24 dev ens4
+ 1675  ovs-vsctl add-port br2 ens4
+ 1676  ip a add 10.0.0.100/24 dev br2
+ 1677  ifconfig ens4 hw ether fa:16:3e:92:66:2a
+ 1678  ovs-vsctl set bridge br2 other-config:hwaddr=fa:16:3e:92:66:2a
+ 1679  ping -c2 -I br2 10.0.0.10
+ 1680  ovs-vsctl add-port br2 gre10 -- set interface gre10 type=gre option:remote_ip=20.0.0.10 option:key=100
+ 1681  ping -c2 -I br2 10.0.0.10
+ 1682  ping 20.0.0.10
+ 1683  ovs-vsctl show
+ 1684  ovs-ofctl show br2
+ 1685  ovs-ofctl add-flow br2 table=0,priority=9,in_port=gre10,actions=mod_dl_src:fa:16:3e:92:66:2a,mod_dl_dst:fa:16:3e:f9:cf:03,output:ens4
+ 1686  ovs-ofctl add-flow br2 table=0,priority=10,arp,in_port=gre10,actions=LOCAL,output:ens4
+ 1687  ovs-ofctl add-flow br2 table=0,priority=10,in_port=gre10,actions=mod_dl_src:fa:16:3e:92:66:2a,mod_dl_dst:fa:16:3e:f9:cf:03,LOCAL,output:ens4
+ 1688  ovs-ofctl del-flows br2 table=0,in_port=gre10
+ 1689  ovs-ofctl add-flow br2 table=0,priority=10,ip,in_port=gre10,nw_dst=10.0.0.100,actions=LOCAL
+ 1690  ovs-ofctl add-flow br2 table=0,priority=9,in_port=gre10,actions=mod_dl_src:fa:16:3e:92:66:2a,mod_dl_dst:fa:16:3e:f9:cf:03,output:ens4
+ 1691  ovs-ofctl del-flows br2 table=0,in_port=gre10
+ 1692  ovs-ofctl add-flow br2 table=0,priority=10,ip,in_port=gre10,nw_dst=10.0.0.100,actions=LOCAL
+ 1693  watch -n2 ovs-ofctl dump-flows br2
+ 1694  ovs-vsctl show
+ 1695  ping -I br2 10.0.0.12
+ 1696  ping -I br2 10.0.0.7
+ 1697  ping -c2 -I br2 10.0.0.7
+ 1698  ping -c20 -I br2 10.0.0.7
+ 1699  ping -c20 -I br2 10.0.0.12
+ 1700  ovs-vsctl show
+ 1701  watch -n2 ovs-ofctl dump-flows br2
+ 1702  ping -c20 -I br2 10.0.0.12
+ 1703  ip a
+ 1704  ip r
+ 1705  ip d 10.2.2.12/24 dev ens4
+ 1706  ip a d 10.2.2.12/24 dev ens4
+ 1707  ip a
+ 1708  ping 10.2.2.1
+ 1709  tcpdump -envi ens4
+ 1710  ovs-vsctl show
+ 1711  ovs-ofctl show br2
+ 1712  ovs-ofctl dump-flows br2
+ 1713  ip a
+ 1714  ip a add 10.2.2.12/24 dev br2:1
+ 1715  ip a
+ 1716  ping 10.2.2.12
+ 1717  watch -n2 ovs-ofctl dump-flows br2
+ 1718  ip a
+ 1719  ovs-vsctl show
+ 1720  ping -c20 -I br2 10.0.0.12
+ 1721  watch -n1 ovs-ofctl dump-flows br2
+ 1722  ip a
+ 1723  ifconfig 
+ 1724  ovs-ofctl dump-flows br2
+ 1725  watch -n1 ovs-ofctl dump-flows br2
+ 1726  ovs-ofctl dump-flows br2
+ 1727  ovs-ofctl show br2
+ 1728  ovs-ofctl del-flows br2
+ 1729  ovs-ofctl add-flow br2 action=NORMAL
+ 1730  ovs-vsctl show
+ 1731  ovs-ofctl del-flows br2
+ 1732  ovs-ofctl add-flow br2 table=0,priority=10,in_port=LOCAL,actions=output:gre10,output:ens4
+ 1733  ovs-ofctl add-flow br2 table=0,priority=10,arp,in_port=gre10,actions=LOCAL,output:ens4
+ 1734  ovs-ofctl add-flow br2 table=0,priority=10,in_port=ens4,actions=output:gre10
+ 1735  ovs-ofctl add-flow br2 table=0,priority=9,in_port=ens4,actions=output:gre10
+ 1736  ovs-ofctl add-flow br2 table=0,priority=8,in_port=ens4,actions=output:gre10
+ 1737  ovs-ofctl del-flows br2
+ 1738  ovs-ofctl add-flow br2 table=0,priority=8,in_port=ens4,actions=output:gre10
+ 1739  ovs-ofctl add-flow br2 table=0,priority=9,in_port=ens4,actions=output:gre10
+ 1740  ovs-ofctl add-flow br2 table=0,priority=10,in_port=LOCAL,actions=output:gre10,output:ens4
+ 1741  ovs-ofctl del-flows br2
+ 1742  ovs-ofctl add-flow br2 table=0,priority=10,in_port=LOCAL,actions=output:gre10,output:ens4
+ 1743  ovs-ofctl add-flow br2 table=0,priority=9,in_port=gre10,actions=LOCAL,output:ens4
+ 1744  ovs-ofctl add-flow br2 table=0,priority=8,in_port=ens4,actions=output:gre10
+ 1745  ovs-ofctl add-flow br2 table=0,priority=9,in_port=gre10,actions=mod_dl_src:fa:16:3e:92:66:2a,mod_dl_dst:fa:16:3e:f9:cf:03,output:ens4
+ 1746  route -n
+ 1747  ovs-ofctl add-flow br2 table=0,priority=8,in_port=ens4,actions=output:LOCAL
+ 1748  ovs-ofctl add-flow br2 table=0,priority=8,in_port=ens4,actions=output:LOCAL,output:gre10
+ 1749  ovs-ofctl add-flow br2 table=0,priority=9,in_port=gre10,actions=LOCAL,output:ens4
+ 1750  ovs-ofctl add-flow br2 table=0,priority=10,in_port=gre10,actions=mod_dl_src:fa:16:3e:92:66:2a,mod_dl_dst:fa:16:3e:f9:cf:03,output:ens4
+ 1751  ifconfig 
+ 1752  tcpdump -envi ens4
+ 1753  tcpdump -envi ens5
+ 1754  watch -n1 ovs-ofctl dump-flows br2
+ 1755  route -n
+ 1756  ovs-ofctl dump-flows br2
+ 1757  ping -I br2 10.2.2.2
+ 1758  arp -a
+ 1759  ping -I br2 10.2.2.13
+ 1760  arp -a
+ 1761  ping 10.0.0.100
+ 1762  ping 10.0.0.10
+ 1763  ping 10.0.0.12
+ 1764  ip a
+ 1765  ovs-ofctl add-flow br2 table=0,priority=10,in_port=gre10,actions=LOCAL,output:ens4
+ 1766  ovs-ofctl add-flow br2 table=0,priority=10,in_port=gre10,actions=mod_dl_src:fa:16:3e:92:66:2a,mod_dl_dst:fa:16:3e:f9:cf:03,output:ens4
+ 1767  ovs-ofctl add-flow br2 table=0,priority=10,in_port=gre10,actions=LOCAL,output:ens4
+ 1768  ovs-ofctl add-flow br2 table=0,priority=10,in_port=gre11,actions=mod_dl_src:fa:16:3e:92:66:2a,mod_dl_dst:fa:16:3e:f9:cf:03,output:ens4
+ 1769  ovs-ofctl add-flow br2 table=0,priority=11,in_port=gre10,actions=mod_dl_src:fa:16:3e:92:66:2a,mod_dl_dst:fa:16:3e:f9:cf:03,output:ens4
+ 1770  ovs-ofctl del-flows br2
+ 1771  ovs-ofctl add-flow br2 table=0,priority=12,in_port=LOCAL,actions=output:gre10,output:ens4
+ 1772  ovs-ofctl add-flow br2 table=0,priority=10,in_port=gre10,actions=output:ens4
+ 1773  ovs-ofctl add-flow br2 table=0,priority=10,in_port=ens4,actions=output:gre10
+ 1774  ovs-ofctl add-flow br2 table=0,priority=10,in_port=gre10,actions=output:ens4,output:LOCAL
+ 1775  ping 10.0.0.12
+ 1776  ovs-ofctl add-flow br2 table=0,priority=10,in_port=gre10,actions=mod_dl_src:fa:16:3e:92:66:2a,mod_dl_dst:fa:16:3e:f9:cf:03,output:ens4
+ 1777  ovs-ofctl add-flow br2 table=0,priority=11,in_port=gre10,actions=output:ens4,output:LOCAL
+ 1778  ovs-ofctl add-flow br2 table=0,priority=10,in_port=ens4,actions=mod_dl_dst:fa:16:3e:92:66:2a,output:gre10
+ 1779  ovs-ofctl add-flow br2 table=0,priority=11,in_port=ens4,actions=mod_dl_dst:fa:16:3e:92:66:2a,output:gre10
+ 1780  ovs-ofctl add-flow br2 table=0,priority=11,in_port=gre10,actions=mod_dl_src:fa:16:3e:92:66:2a,mod_dl_dst:fa:16:3e:f9:cf:03,output:ens4
+ 1781  ovs-ofctl add-flow br2 table=0,priority=12,in_port=gre10,actions=output:ens4,output:LOCAL
+ 1782  ping 10.0.0.12
+ 1783  ovs-ofctl del-flows br2 in_port=1
+ 1784  ovs-ofctl add-flow br2 table=0,priority=10,in_port=ens4,actions=output:gre10
+ 1785  ovs-ofctl add-flow br2 table=0,priority=10,in_port=ens4,actions=output:LOCAL
+ 1786  ping 10.0.0.12
+ 1787  ovs-ofctl add-flow br2 table=0,priority=10,in_port=ens4,actions=output:gre10,LOCAL
+ 1788  ovs-ofctl dump-flows br2
+ 1789  ovs-ofctl add-flow br2 table=0,priority=12,in_port=gre20,actions=resubmit(\,1)\
+ 1790  ovs-ofctl add-flow br2 table=0,priority=12,in_port=gre20,actions=resubmit\(,1\)
+ 1791  ovs-vsctl show
+ 1792  ovs-vsctl add-port br2 gre20 -- set interface gre20 type=gre option:remote_ip=20.0.0.10 option:key=200
+ 1793  ovs-ofctl add-flow br2 table=0,priority=12,in_port=gre20,actions=resubmit\(,1\)
+ 1794  table=1,priority=12,ip,in_port=gre20,actions=mod_dl_src:fa:16:3e:92:66:2a,mod_dl_dst:fa:16:3e:f9:cf:03,output:ens4
+ 1795  ovs-ofctl add-flow br2 table=1,priority=12,ip,in_port=gre20,actions=mod_dl_src:fa:16:3e:92:66:2a,mod_dl_dst:fa:16:3e:f9:cf:03,output:ens4
+ 1796  ovs-ofctl dump-flows br2
+ 1797  ovs-ofctl del-flows br2
+ 1798  tcpdump -envi ens4
+ 1799  ovs-ofctl dump-flows br2
+ 1800  ovs-vsctl show
+ 1801  ovs-ofctl show br1
+ 1802  ovs-ofctl show br2
+ 1803  arp -a
+ 1804  ovs-ofctl dump-flows br2
+ 1805  ovs-ofctl add-flow br2 table=0,priority=10,in_port=LOCAL,actions=output:gre10,output:ens4
+ 1806  ovs-ofctl add-flow br2 table=0,priority=10,arp,in_port=gre10,actions=LOCAL
+ 1807  ovs-ofctl add-flow br2 table=0,priority=10,in_port=gre10,actions=LOCAL
+ 1808  ovs-ofctl dump-flows br2
+ 1809  ovs-ofctl add-flow br2 table=0,priority=10,in_port=gre10,actions=output:ens4,LOCAL
+ 1810  ovs-ofctl dump-flows br2
+ 1811  ovs-ofctl add-flow br2 table=0,priority=10,in_port=ens4 actions=output:gre10
+ 1812  ovs-ofctl add-flow br2 table=0,priority=10,in_port=ens4,actions=output:gre10
+ 1813  ovs-ofctl dump-flows br2
+ 1814  ping 10.0.0.12
+ 1815  watch -n1 ovs-ofctl dump-flows br2
+ 1816  ovs-ofctl del-flows br2 in_port=1
+ 1817  ovs-ofctl del-flows br2 in_port=2
+ 1818  ovs-ofctl del-flows br2 in_port=LOCAL
+ 1819  ovs-ofctl add-flow br2 table=0,priority=10,in_port=LOCAL,actions=output:ens4
+ 1820  ovs-ofctl add-flow br2 table=0,priority=10,in_port=ens4 actions=output:gre10
+ 1821  ovs-ofctl add-flow br2 table=0,priority=10,in_port=ens4,actions=output:gre10
+ 1822  ovs-ofctl add-flow br2 table=0,priority=10,in_port=gre10,actions=output
+ 1823  ovs-ofctl add-flow br2 table=0,priority=10,in_port=LOCAL,actions=output:ens4,output:gre10
+ 1824  ovs-ofctl add-flow br2 table=0,priority=10,in_port=gre10,actions=output:LOCAL
+ 1825  ovs-ofctl add-flow br2 table=0,priority=10,in_port=gre10,actions=output:LOCAL,output:ens4
+ 1826  ping 10.0.0.1
+ 1827  ovs-ofctl del-flows br2 in_port=1
+ 1828  ovs-ofctl del-flows br2 
+ 1829  ovs-ofctl add-flow br2 table=1,priority=12,ip,in_port=gre20,actions=mod_dl_src:fa:16:3e:92:66:2a,mod_dl_dst:fa:16:3e:f9:cf:03,output:ens4
+ 1830  ovs-ofctl add-flow br2 table=1,priority=34,in_port=LOCAL,actions=output:gre20
+ 1831  ovs-ofctl del-flows br2 
+ 1832  ovs-ofctl add-flow br2 table=0,priority=12,in_port=gre20,actions=resubmit\(,1\)
+ 1833  ovs-ofctl add-flow br2 table=0,priority=10,in_port=LOCAL,actions=output:gre10,output:ens4
+ 1834  ovs-ofctl add-flow br2 table=0,priority=10,ip,in_port=gre10,actions=LOCAL
+ 1835  ovs-ofctl add-flow br2 table=0,priority=10,ip,in_port=ens4,actions=LOCAL
+ 1836  ovs-ofctl add-flow br2 table=0,priority=9,ip,in_port=ens4,actions=output:gre10
+ 1837  ovs-ofctl add-flow br2 table=0,priority=10,in_port=gre10,actions=mod_dl_src:fa:16:3e:92:66:2a,mod_dl_dst:fa:16:3e:f9:cf:03,output:ens4
+ 1838  ovs-ofctl add-flow br2 table=0,priority=9,ip,in_port=ens4,actions=output:gre10,LOCAL
+ 1839  ovs-ofctl add-flow br2 table=0,priority=10,ip,in_port=ens4,nw_dst=10.0.0.100,actions=LOCAL
+ 1840  ovs-ofctl del-flows br2 in_port=LOCAL
+ 1841  watch -n1 ovs-ofctl dump-flows br2
+ 1842  tcpdump -envi ens4
+ 1843  traceroute ua.pt
+ 1844  traceroute -h
+ 1845* 
+ 1846  traceroute -i br2 ua.pt
+ 1847  traceroute -i ens4 ua.pt
+ 1848  ovs-vsctl show
+ 1849  traceroute -i ens4 ua.pt
+ 1850  ovs-vsctl show
+ 1851  watch -n1 ovs-ofctl dump-flows br2
+ 1852  ls
+ 1853  ll
+ 1854  ovs-ofctl dump-flows br2
+ 1855  ovs-ofctl dump-flows br2 > ftable.txt
+ 1856  l
+ 1857  vi ftable.txt 
+ 1858* 
+ 1859  cd ..
+ 1860  ls
+ 1861  users
+ 1862  user
+ 1863  groups
+ 1864  ifconfig
+ 1865  ping 8.8.8.8
+ 1866  sudo apt-get install git -y
+ 1867  git  config --global user.name"AlaaZeed"
+ 1868  git  config --global user.email "alaazed@gmail.com"
+ 1869  ll
+ 1870  mkdir git_files
+ 1871  cd git_files/
+ 1872  history > History.txt
+ 1873  ls
+ 1874  nano History.txt 
+ 1875  git add History.txt 
+ 1876  git clone https://github.com/AlaaZeed/Notes.git
+ 1877  git add History.txt 
+ 1878  ll
+ 1879  cd Notes/
+ 1880  git add  /home/git_files/History.txt 
+ 1881  history > History.txt
